@@ -1,16 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
+import { AddComponent } from "./add/add.component";
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, AddComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
   @Input({required: true}) name!: string;
   @Input({required: true}) userId!: string;
+  protected isAddingTask = false;
+  @Output() close = new EventEmitter<boolean>;
+
   protected  tasks = [
     {
       id: 't1',
@@ -42,5 +46,13 @@ export class TasksComponent {
 
   protected onCompleteTask(id: string){
     this.tasks = this.tasks.filter((task)=>task.id !== id);
+  }
+
+  protected addNewTask() {
+    this.isAddingTask = true;
+  }
+
+  protected onCancelAddTask() {
+    this.isAddingTask = false;
   }
 }
