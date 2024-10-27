@@ -1,9 +1,4 @@
-export interface USER{
-  id: string,
-  name: string,
-  avatar: string
-}
-export const USERS: USER[]= [
+export const USERS=[
   {
     id: 'u1',
     name: 'Jasmine Washington',
