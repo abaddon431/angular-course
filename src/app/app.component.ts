@@ -16,6 +16,7 @@ import { USERS } from './dummy-users';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
+
 export class AppComponent {
   users: User[] = USERS;
   selectedUserID!: string;

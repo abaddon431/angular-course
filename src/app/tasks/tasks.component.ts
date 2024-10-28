@@ -24,9 +24,6 @@ export class TasksComponent {
     return this.tasksService.getUserTasks(this.userId);
   }
 
-  protected onCompleteTask(id: string){
-    this.tasksService.removeTask(id)
-  }
 
   protected addNewTask() {
     this.isAddingTask = true;
@@ -37,7 +34,7 @@ export class TasksComponent {
   }
 
   protected onSubmit(newTask: AddTask){
-    this.tasksService.addTask(newTask, this.userId);
+    this.tasksService.addTask(newTask, this.userId)
     this.isAddingTask = false;
   }
 }
